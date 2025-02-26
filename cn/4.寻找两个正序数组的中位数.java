@@ -54,10 +54,43 @@
 
 // @lc code=start
 class Solution {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    private double s1(int[] nums1, int[] nums2) {
         double ans = 0.0;
-        
+        int m = nums1.length;
+        int n = nums2.length;
+        int[] combined = new int[m+n];
+        int i = 0, j = 0, k = 0;
+
+        while(j < m && k < n ) {
+            if (nums1[j] < nums2[k]) {
+                combined[i++] = nums1[j++]; 
+            } else {
+                combined[i++] = nums2[k++];
+            }
+        }
+
+        while( j < m) {
+            combined[i++] = nums1[j++];
+        }
+
+        while (k < n) {
+            combined[i++] = nums2[k++];
+        }
+
+        boolean isEven = (m + n) % 2 == 0;
+        int middle = (m + n) / 2;
+
+        if (isEven) {
+            ans = (combined[middle] + combined[middle -1]) / 2.0;
+        } else {
+            ans = combined[middle];
+        }
+
         return ans;
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+       return s1(nums1, nums2);
     }
 }
 // @lc code=end

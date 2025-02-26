@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "en",
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.debug.settings.onBuildFailureProceed": true,
+		"java.project.sourcePaths": [
+			"."
+		],
+		"java.project.referencedLibraries": []
+	}
+}

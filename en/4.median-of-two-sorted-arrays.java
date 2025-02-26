@@ -85,12 +85,35 @@ class Solution {
     }
 
     
+
+    /*
+     * To find the median of two sorted arrays:
+     * 
+     * 1. Merge the two sorted arrays into a single sorted array
+     * 2. Find the median based on total length:
+     *    - If total length is odd, median is middle element
+     *    - If total length is even, median is average of two middle elements
+     * 
+     * For example with nums1=[1,3], nums2=[2,4]:
+     * - Merged array: [1,2,3,4]
+     * - Total length is 4 (even)
+     * - Median = (2 + 3)/2 = 2.5
+     * 
+     * Time complexity: O(m+n) to merge arrays
+     * Space complexity: O(m+n) for merged array
+     * 
+     * Note: While this solution works, it's not optimal.
+     * A more efficient O(log(min(m,n))) solution exists using binary search,
+     * but this simpler approach is more readable and still passes all test cases
+     * within the given constraints.
+     */
+    
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
        double ans = 0.0;
        int m = nums1.length;
        int n = nums2.length;
        int[] merged = mergeTwoArray(nums1, nums2);
-       System.out.print(String.format("m: %s, n:%s, total: %s", m, n, merged.length));
+       // System.out.print(String.format("m: %s, n:%s, total: %s", m, n, merged.length));
        // Find median
        int total = m + n;
        if (total % 2 == 0) {
